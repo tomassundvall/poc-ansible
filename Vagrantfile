@@ -18,10 +18,10 @@ Vagrant.configure("2") do |config|
         controller.vm.hostname = "controller"
         controller.vm.network "private_network", ip: "172.20.20.99"
         controller.vm.provision "shell", privileged: false, path: "install_ansible.sh"
-        controller.vm.provision "shell", inline: <<-SHELL
-            sudo mkdir /etc/ansible
-            sudo cp /vagrant/hosts /etc/ansible/
-        SHELL
+        controller.vm.provision "shell", privileged: false, inline: <<-EOF
+           sudo mkdir /etc/ansible
+           sudo cp /vagrant/hosts /etc/ansible/
+        EOF
         controller.ssh.insert_key = false
     end
 end
