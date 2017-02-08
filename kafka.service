@@ -1,0 +1,20 @@
+[Unit]
+Description=Apache Kafka server (broker)
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target remote-fs.target syslog.target
+After=network.target remote-fs.target syslog.target
+ConditionPathExists=/etc/kafka/server.properties
+ConditionPathExists=/var/lib/kafka
+
+[Service]
+Type=simple
+User=kafka
+Group=kafka
+WorkingDirectory=/var/lib/kafka
+ExecStart=
+ExecStop=
+Restart=on-failure
+SyslogIdentifier=kafka
+
+[Install]
+WantedBy=multi-user.target
