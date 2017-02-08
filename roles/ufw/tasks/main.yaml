@@ -9,11 +9,10 @@
 - name: Allow some TCP traffic
   ufw: rule=allow to_port={{ item }} proto=tcp
   with_items:
-    - http
-    - https
     - "{{ sshd_port }}"
-    - smtp
-    - ssmtp
+    - 2181 # ZooKeeper client port
+    - 2888 # PeerPort
+    - 3888 # LeaderPort
 
 - name: Allow DNS (TCP and UDP)
   ufw: rule=allow to_port=domain
