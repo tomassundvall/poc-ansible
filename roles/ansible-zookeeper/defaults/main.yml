@@ -17,13 +17,3 @@ zookeeper:
   log_level: WARN
   user: zookeeper
   version: 3.4.8
-
-  # If enabled AWS will be used to figure out which host and id should be used
-  # Note that you must install the AWS CLI tools on the machine to use this feature
-  aws_cluster_autodiscover:
-    enabled: false
-    # Tag to store the ID/index of the host that gets assigned to a machine
-    id_tag_name: ZookeeperID
-    # AWS CLI lookup filter
-    lookup_filter: "Name=tag:Environment,Values=dev Name=tag:Role,Values=zookeeper"
-    r53_zone_id: ~
