@@ -1,1 +1,6 @@
-# poc-ansibleFrom the controller    ansible-playbook playbook.yml -f 10    
+# poc-ansible
+
+From the controller
+
+    ansible-playbook playbook.yml -f 10
+    
