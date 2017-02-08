@@ -10,6 +10,7 @@
         oracle_java_version: 8,
         oracle_java_version_update: 121,
         oracle_java_state: latest }
+    - ansible-zookeeper
 
   tasks:
     - name: Update and upgrade packages
@@ -34,4 +35,6 @@
       command: timedatectl set-timezone {{ timezone }}
 
     - name: Install NTP
-      apt: pkg=ntp state=present
+      apt: pkg={{ item }} state=present
+      with_items:
+        - ntp

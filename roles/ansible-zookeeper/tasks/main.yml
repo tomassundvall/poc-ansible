@@ -1,9 +1,8 @@
 ---
-
 - name: Install Zookeeper
-  include: build.yml
+  include: install.yml
   tags:
-    - build
+    - install
 
 - name: Configure Zookeeper
   include: configure.yml

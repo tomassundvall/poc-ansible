@@ -1,0 +1,30 @@
+---
+- name: Install Zookeeper package
+  apt: pkg={{ item }} state=present
+  with_items:
+    - zookeeper
+    - zookeeper-bin
+
+- name: Create Zookeeper directories
+  become: yes
+  become_user: "{{ zookeeper.user }}"
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ zookeeper.conf_dir }}"
+    - "{{ zookeeper.data_dir }}"
+    - "{{ zookeeper.log_dir }}"
+
+# TODO: ZooKeeper systemd unit file
+- name: Create Zookeeper .service file
+  template: src=zookeeper.service.j2 dest=/usr/lib/systemd/system/zookeeper.service
+
+- name: Enable Zookeeper service
+  become: yes
+  service:
+    enabled: yes
+    name: zookeeper
+
+#- name: Start Zookeeper
+#  systemd: state=started name=zookeeper daemon_reload=yes
