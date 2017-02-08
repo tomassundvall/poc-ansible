@@ -16,7 +16,9 @@
     - "{{ zookeeper.data_dir }}"
     - "{{ zookeeper.log_dir }}"
 
-# TODO: ZooKeeper systemd unit file
+- name: Ensure unit file directory
+  file: path=/usr/lib/systemd/system state=directory owner=root group=root
+
 - name: Create Zookeeper .service file
   template: src=zookeeper.service.j2 dest=/usr/lib/systemd/system/zookeeper.service
 
