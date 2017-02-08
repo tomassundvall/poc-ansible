@@ -5,6 +5,7 @@ zookeeper:
   connect_port: 2888
   conf_dir: /etc/zookeeper
   data_dir: /var/lib/zookeeper
+  install_dir: /usr/share/zookeeper
   election_port: 3888
   user: zookeeper
   group: zookeeper

@@ -1,10 +1,12 @@
 ---
+- name: Set ansible:ansible ownership on directory
+  file: path=/etc/zookeeper group=zookeeper owner=zookeeper
 
 - name: Setup myid
   become: yes
   become_user: "{{ zookeeper.user }}"
   template:
-    dest: "{{ zookeeper.data_dir }}/myid"
+    dest: "{{ zookeeper.conf_dir }}/myid"
     src: myid.j2
   notify:
    - restart zookeeper
