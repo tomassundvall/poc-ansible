@@ -5,8 +5,7 @@
   roles:
     - ufw
     - yatesr.timezone
-    - sansible.kafka
-    - sansible.zookeeper
+    - ansible-zookeeper
 
   tasks:
     - name: Update and upgrade packages
