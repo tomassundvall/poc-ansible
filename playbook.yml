@@ -2,10 +2,15 @@
 - hosts: all
   become: True
 
+  vars:
+
   roles:
     - ufw
     - yatesr.timezone
-    - ansible-zookeeper
+    - { role: ansiblebit.oracle-java,
+        oracle_java_set_as_default: true,
+        oracle_java_version: 8,
+        oracle_java_state: latest }
 
   tasks:
     - name: Update and upgrade packages

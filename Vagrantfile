@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
   # configure the boxes
   config.vm.box = "v0rtex/xenial64"
   config.vm.provision "shell", privileged: false, inline: <<-EOF
+    sudo apt-get update -y
     sudo apt-get install -y libssl-dev libffi-dev python-dev
   EOF
 
