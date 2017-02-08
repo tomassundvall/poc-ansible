@@ -2,14 +2,13 @@
 - hosts: all
   become: True
 
-  vars:
-
   roles:
     - ufw
     - yatesr.timezone
     - { role: ansiblebit.oracle-java,
         oracle_java_set_as_default: true,
         oracle_java_version: 8,
+        oracle_java_version_update: 121,
         oracle_java_state: latest }
 
   tasks:
